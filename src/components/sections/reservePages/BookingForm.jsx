@@ -10,6 +10,7 @@ export default function ReservationForm(props) {
   const [occasion, setOccasion] = useState("");
   const [preferences, setPreferences] = useState("");
   const [comments, setComments] = useState("");
+  const [error, setError] = useState(null)
 
   const [finalTime, setFinalTime] = useState(
     props.availableTimes.map((times,index) => <option key={index}>{times}</option>)
@@ -26,9 +27,54 @@ export default function ReservationForm(props) {
     setFinalTime(props.availableTimes.map((times, index) => <option key={index}>{times}</option>));
   }
 
+  function handleFNameChange(e){
+    if(e.target.value.length < 2){
+      setError("First name too short")
+  }
+  if(error && e.target.value.length >= 2){
+      setError("");
+  }
+  if(e.target.value.length > 20){
+      setError("First name too long")
+  }
+  if(error && e.target.value.length <= 20){
+      setError("")
+  }
+    setFName(e.target.value)
+  }
+
+  function handleLNameChange(e){
+    if(e.target.value.length < 2){
+      setError("Last name too short")
+  }
+  if(error && e.target.value.length >= 2){
+      setError("");
+  }
+  if(e.target.value.length > 25){
+      setError("Last name too long")
+  }
+  if(error && e.target.value.length <= 20){
+      setError("")
+  }
+    setLName(e.target.value)
+  }
+
+  function handleEmailChange(e){
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if ( re.test(e) ) {
+      setEmail(e.target.value)
+    }
+    else {
+        setError("Please enter a valid email")
+    }
+
+  }
+
   return (
     <form className="reservation-form">
       <div>
+      {error && <p>{error}</p>}
         <label htmlFor="fName">First Name</label> <br></br>
         <input
           type="text"
@@ -36,9 +82,9 @@ export default function ReservationForm(props) {
           placeholder="First Name"
           required
           minLength={2}
-          maxLength={50}
+          maxLength={21}
           value={fName}
-          onChange={(e) => setFName(e.target.value)}
+          onChange={handleFNameChange}
         ></input>
       </div>
 
@@ -49,9 +95,9 @@ export default function ReservationForm(props) {
           id="lName"
           placeholder="Last Name"
           minLength={2}
-          maxLength={50}
+          maxLength={26}
           value={lName}
-          onChange={(e) => setLName(e.target.value)}
+          onChange={handleLNameChange}
         ></input>
       </div>
 
@@ -76,10 +122,10 @@ export default function ReservationForm(props) {
           id="phonenum"
           placeholder="(xxx)-xxx-xxxx"
           value={tel}
-          required
           minLength={10}
           maxLength={25}
           onChange={(e) => setTel(e.target.value)}
+          required
         ></input>
       </div>
 
@@ -90,10 +136,10 @@ export default function ReservationForm(props) {
           id="people"
           placeholder="Number of People"
           value={people}
-          required
           min={1}
           max={100}
           onChange={(e) => setPeople(e.target.value)}
+          required
         ></input>
       </div>
 
@@ -102,9 +148,9 @@ export default function ReservationForm(props) {
         <input
           type="date"
           id="date"
-          required
           value={date}
           onChange={handleDateChange}
+          required
         ></input>
       </div>
 
