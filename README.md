@@ -5,6 +5,8 @@ Final capstone project for Meta Front-end developer program on Coursera, which c
 
 course link - [Meta front end development professional certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer)
 
+## Deployed Website:
+[Deployed Site](https://660ed08e9a35f51a7b75f772--dreamy-cocada-7ba856.netlify.app/)
 ### Tech Stack:
 
 - HTML, CSS
@@ -14,7 +16,6 @@ course link - [Meta front end development professional certificate](https://www.
 ### Third Party Libraries & APIs:
 
 - react-router-dom
-- react-responsive-carousel
 - Meta front-end table-booking API
 
 ## Available Scripts
@@ -28,10 +29,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
 
 
 ### `npm run build`
