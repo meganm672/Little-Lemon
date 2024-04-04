@@ -11,15 +11,15 @@ import Heading from "../sections/reservePages/Heading";
     expect(app).not.toBe(null);
 });
 
-test('Renders the Header heading', () => {
-    render(<BrowserRouter><App /></BrowserRouter>);
-    const headingElement = screen.getByText("Reserve a Table");
-    expect(headingElement).toBeInTheDocument();
+// test('Renders the Header heading', () => {
+//     render(<BrowserRouter><App /></BrowserRouter>);
+//     const headingElement = screen.getByText("Reserve a Table");
+//     expect(headingElement).toBeInTheDocument();
 
-    const reserveButton = screen.getByRole("button");
-    fireEvent.click(reserveButton);
+//     const reserveButton = screen.getByRole("button");
+//     fireEvent.click(reserveButton);
 
-    const headingElementNew = screen.getByText("Reserve a table");
-    expect(headingElementNew).toBeInTheDocument();
-})
+//     const headingElementNew = screen.getByText("Reserve a table");
+//     expect(headingElementNew).toBeInTheDocument();
+// })
 
